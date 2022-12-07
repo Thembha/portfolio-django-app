@@ -56,3 +56,21 @@ td{
     padding: 10px;
     border-bottom: 1px solid grey;
 }
+
+.btn{
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.textbox{
+    border: none;
+    border-bottom: 1px solid green;
+    margin-right: 20px;
+}
+
+.lbl{
+    display: inline-block;
+    width: 120px;
+}

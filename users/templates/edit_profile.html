@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block page_heading %}
+PROFILE UPDATE
+{% endblock page_heading %}
+
+{% block page_description %}
+Update user profile for currently logged in user with username "{{user.username}}".
+{% endblock page_description %}
+
+{% block content %}
+    {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, err in user_form.errors.items %}
+                    <strong>{{ err }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="">
+                    <label class="lbl">Username:</label>
+                        {{ user_form.username }}
+                    <label class="lbl">Email:</label>
+                        {{ user_form.email }} <br>
+                    <label class="lbl">First Name:</label>
+                        {{ user_form.first_name }}
+                    <label class="lbl">Last Name:</label>
+                        {{ user_form.last_name }} <br>
+                    <label class="lbl">Phone Number:</label>
+                    {{ profile_form.phone_number }} <br>
+                    <label class="lbl">Home Address:</label> <br>
+                    {{ profile_form.home_address }} <br>
+                    <label class="lbl">Location Lattitude:</label>
+                    {{ profile_form.location_lat }}
+                    <label class="lbl">Location Longitude:</label>
+                    {{ profile_form.location_lon }}
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn active">Update</button>
+            <button type="reset" class="btn">Reset</button>
+        </form>
+    </div>
+{% endblock content %}
+
