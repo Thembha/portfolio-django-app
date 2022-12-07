@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Page Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block special_styles %}{% endblock special_styles %}
+    {% block special_scripts %}{% endblock special_scripts %}
+</head>
+<body>
+    <div id="header">
+        <h1>{% block page_heading %}{% endblock page_heading %}</h1>
+        <h4>{% block page_description %}{% endblock page_description %}</h4>
+        <hr>
+    </div>
+    <div id="nav">
+        <a href="{% url 'index' %}" class="{% if page == 'profile' %}active{% else %}grey-background{% endif %}" id="view">View Profile</a>
+        <a href="{% url 'edit' user_id=user.id %}" class="{% if page == 'edit' %}active{% else %}grey-background{% endif %}" id="edit">Edit Profile</a>
+        {% if user.is_superuser %}
+        <a href="{% url 'map' %}" class="{% if page == 'map' %}active{% else %}grey-background{% endif %}" id="view">View Map</a>
+        {% endif %}
+        <a href="{% url 'index' %}" id="logout">Logout</a>
+    </div>
+    <div id="content" class="center-div-contents flex-dir-row">{% comment %} Must have both classes {% endcomment %}
+        {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>
