@@ -18,7 +18,7 @@
     </div>
     <div id="nav">
         <a href="{% url 'index' %}" class="{% if page == 'profile' %}active{% else %}grey-background{% endif %}" id="view">View Profile</a>
-        <a href="{% url 'edit' user_id=user.id %}" class="{% if page == 'edit' %}active{% else %}grey-background{% endif %}" id="edit">Edit Profile</a>
+        <a href="{% url 'edit' %}" class="{% if page == 'edit' %}active{% else %}grey-background{% endif %}" id="edit">Edit Profile</a>
         {% if user.is_superuser %}
         <a href="{% url 'map' %}" class="{% if page == 'map' %}active{% else %}grey-background{% endif %}" id="view">View Map</a>
         {% endif %}

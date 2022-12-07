@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block page_heading %}
+PROFILE
+{% endblock page_heading %}
+
+{% block page_description %}
+Viewing user profile for currently logged in user with username "{{user.username}}".
+{% endblock page_description %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>Username: </td>
+            <td>{{user.username}}</td>
+        </tr>
+        <tr>
+            <td>First Name: </td>
+            <td>{{user.first_name}}</td>
+        </tr>
+        <tr>
+            <td>Last Name: </td>
+            <td>{{user.last_name}}</td>
+        </tr>
+        <tr>
+            <td>Phone Number: </td>
+            <td>{{user.profile.phone_number}}</td>
+        </tr>
+        <tr>
+            <td>Email Address: </td>
+            <td>{{user.email}}</td>
+        </tr>
+        <tr>
+            <td>Home Address: </td>
+            <td>{{user.profile.home_address}}</td>
+        </tr>
+    </table>
+{% endblock content %}

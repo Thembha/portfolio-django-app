@@ -1,7 +1,9 @@
 from django.urls import path
 
-from . import views
+from . views import index, edit, map
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', index, name='index'),
+    path('edit/', edit, name='edit'),
+    path('map/', map, name='map'),
 ]
