@@ -16,14 +16,10 @@
         <h4>{% block page_description %}{% endblock page_description %}</h4>
         <hr>
     </div>
-    <div id="nav">
-        <a href="{% url 'index' %}" class="{% if page == 'profile' %}active{% else %}grey-background{% endif %}" id="view">View Profile</a>
-        <a href="{% url 'edit' %}" class="{% if page == 'edit' %}active{% else %}grey-background{% endif %}" id="edit">Edit Profile</a>
-        {% if user.is_superuser %}
-        <a href="{% url 'map' %}" class="{% if page == 'map' %}active{% else %}grey-background{% endif %}" id="view">View Map</a>
-        {% endif %}
-        <a href="{% url 'index' %}" id="logout">Logout</a>
-    </div>
+    {% block nav %}
+    {% include 'nav.html' %}
+    {% endblock nav %}
+    
     <div id="content" class="center-div-contents flex-dir-row">{% comment %} Must have both classes {% endcomment %}
         {% block content %}{% endblock content %}
     </div>
