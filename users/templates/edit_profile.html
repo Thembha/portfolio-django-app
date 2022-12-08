@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block page_heading %}
 PROFILE UPDATE
 {% endblock page_heading %}
@@ -49,5 +49,6 @@ Update user profile for currently logged in user with username "{{user.username}
             <button type="reset" class="btn">Reset</button>
         </form>
     </div>
-{% endblock content %}
 
+    <script src="{% static 'js/get_current_location.js' %}"></script>
+{% endblock content %}
