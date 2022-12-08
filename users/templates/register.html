@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        td {
+            border: none;
+            padding: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="center-div-contents flex-dir-col">
+        <h3 class="">Create Account</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="" role="alert">
+                    <div id="form_errors">
+                        {% for key, value in form.errors.items %}
+                            <strong>{{ value }}</strong>
+                        {% endfor %}
+                    </div>
+                    <button type="button" class="" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+                <table>
+                    <tr class="">
+                        <td class="">First Name</td>
+                        <td>{{ form.first_name }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Last Name</td>
+                        <td>{{ form.last_name }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Username</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Email</td>
+                        <td>{{ form.email }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Phone Number</td>
+                        <td>{{ form.phone_number }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Home Address</td>
+                        <td>{{ form.home_address }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Location (Latitude)</td>
+                        <td>{{ form.location_lat }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Location (Longitude)</td>
+                        <td>{{ form.location_lon }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Password</td>
+                        <td>{{ form.password1 }}</td>
+                        <td>{{ form.errors.password }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">Confirm Password</td>
+                        <td>{{ form.password2 }}</td>
+                    </tr>
+                </table>
+                <button type="submit" class="">Sign Up</button><br><br>
+        </form>
+        <a href="{% url 'login' %}">Have an account? Go to Sign in</a>
+    </div>
+
+    <script src="{% static 'js/get_current_location.js' %}"></script>
+</body>
+</html>
